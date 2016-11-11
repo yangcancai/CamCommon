@@ -1,18 +1,20 @@
 # CamCommon
-implement C++ Reflection  and SmartPtr
+* implement C++ Reflection  and SmartPtr
 and memory leak detect use Visual Leak Detector 
-# step
-*First : down load Visual Leak Detector for visual c++
-    link: http://vld.codeplex.com/
-*Install and Setting 
+
+# How to Install
+* Download something 
+   * Down load Visual Leak Detector for visual c++
+   * Link: http://vld.codeplex.com/
+* Install and Setting 
    * c/c++ -> General -> Additional Include Directories = C:\Program Files (x86)\Visual Leak Detector\include
    * Linker -> General -> Additional Library Directories = C:\Program Files (x86)\Visual Leak Detector\lib\Win32
-
+   
 # How to use?
-```c++
+```c
 int main(){
 
-	RefBaseClass* pVar = (RefBaseClass*)RefClassFactory::sharedClassFactory().createClassByName("RefHelloClass");
+    RefBaseClass* pVar = (RefBaseClass*)RefClassFactory::sharedClassFactory().createClassByName("RefHelloClass");
 	int v = 5;
 	pVar->registProperty();
 	pVar->_propertyMap["set_pValue"](pVar, &v);
@@ -44,3 +46,11 @@ int main(){
 	return 0;
 }
 ```
+# Thanks
+  * [SmartPtr](http://www.cnblogs.com/QG-whz/p/4777312.html)
+  * [Leak Detector](http://www.cnblogs.com/chuncn/archive/2012/12/05/2803450.html)
+  * [C++ Reflection](http://blog.csdn.net/cen616899547/article/details/9317323)
+  * [SuperSocket](http://www.supersocket.net/)
+ 
+# About author
+  If you have any quetions,please contact `710180334@qq.com`
