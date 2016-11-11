@@ -7,6 +7,7 @@ and memory leak detect use Visual Leak Detector
 *Install and Setting 
    * c/c++ -> General -> Additional Include Directories = C:\Program Files (x86)\Visual Leak Detector\include
    * Linker -> General -> Additional Library Directories = C:\Program Files (x86)\Visual Leak Detector\lib\Win32
+
 # How to use?
 ```c++
 int main(){
