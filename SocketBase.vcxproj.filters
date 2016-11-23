@@ -66,6 +66,21 @@
     <ClInclude Include="SmartPtr.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="IBootstrap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BootstrapFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBootstrap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IMutex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IAppServer.cpp">
@@ -120,6 +135,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="SmartPtr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IBootstrap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BootstrapFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBootstrap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IMutex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -33,9 +33,11 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="libevent.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="libevent.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -44,9 +46,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(LIBEVENT)/include;$(LIBEVENT)/src/WIN32-Code;$(LIBEVENT)/src/compat;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D WIN32 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>G:\data center\网络编程\libevent\project\vs2008\Debug\libevent.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -67,13 +72,18 @@
     <ClInclude Include="AppServer.h" />
     <ClInclude Include="AppSession.h" />
     <ClInclude Include="BinaryRequestInfo.h" />
+    <ClInclude Include="BootstrapFactory.h" />
     <ClInclude Include="CommandBase.h" />
+    <ClInclude Include="common.h" />
     <ClInclude Include="EchoTos.h" />
     <ClInclude Include="IAppServer.h" />
     <ClInclude Include="IAppSession.h" />
+    <ClInclude Include="IBootstrap.h" />
     <ClInclude Include="ICommand.h" />
+    <ClInclude Include="IMutex.h" />
     <ClInclude Include="IRequestInfo.h" />
     <ClInclude Include="ManagerClass.h" />
+    <ClInclude Include="NormalBootstrap.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="RefBaseClass.h" />
     <ClInclude Include="RefClassFactory.h" />
@@ -86,14 +96,18 @@
     <ClCompile Include="AppServer.cpp" />
     <ClCompile Include="AppSession.cpp" />
     <ClCompile Include="BinaryRequestInfo.cpp" />
+    <ClCompile Include="BootstrapFactory.cpp" />
     <ClCompile Include="CommandBase.cpp" />
     <ClCompile Include="EchoTos.cpp" />
     <ClCompile Include="IAppServer.cpp" />
     <ClCompile Include="IAppSession.cpp" />
+    <ClCompile Include="IBootstrap.cpp" />
     <ClCompile Include="ICommand.cpp" />
+    <ClCompile Include="IMutex.cpp" />
     <ClCompile Include="IRequestInfo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManagerClass.cpp" />
+    <ClCompile Include="NormalBootstrap.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="RefBaseClass.cpp" />
     <ClCompile Include="RefClassFactory.cpp" />

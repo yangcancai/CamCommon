@@ -43,6 +43,9 @@ namespace CamCommon
 		T* operator->(){
 			return refPtr->obj;
 		}
+		T* own(){
+			return refPtr->obj;
+		}
 	private:
 		RefPtr<T>* refPtr;
 		void releaseCount()

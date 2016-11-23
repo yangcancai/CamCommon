@@ -1,6 +1,8 @@
 #include "IAppSession.h"
 #include "IAppServer.h"
 #include "RefBaseClass.h"
+#include "AppServer.h"
+#include "AppSession.h"
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
@@ -10,6 +12,10 @@
 #include "Object.h"  
 #include "ManagerClass.h"
 #include "SmartPtr.h"
+#include "BootstrapFactory.h"
+#pragma comment(lib, "ws2_32.lib")
+
+
 using namespace std;
 using namespace CamCommon;
 namespace CamCommon
@@ -43,6 +49,18 @@ namespace CamCommon
 	};
 }
 int main(){
+#ifdef WIN32
+	WSADATA wsa_data;
+	WSAStartup(0x0201, &wsa_data);
+#endif
+	// bootstrap
+	IBootstrap &boot = BootstrapFactory::CreateBootstrap();
+	SmartPtr<IAppServer> server(new AppServer());
+	SmartPtr<IAppSession> session(new AppSession());
+	boot.AddServer(server.own());
+	boot.Start();
+	boot.Loop();
+	boot.Stop();
 
 	RefBaseClass* pVar = (RefBaseClass*)RefClassFactory::sharedClassFactory().createClassByName("RefHelloClass");
 	int v = 5;
@@ -50,7 +68,8 @@ int main(){
 	pVar->_propertyMap["set_pValue"](pVar, &v);
 	pVar->display();
 	pVar = (RefBaseClass*)RefClassFactory::sharedClassFactory().createClassByName("EchoTos");
-    pVar->ExecuteCommand(NULL,NULL);
+	
+	pVar->ExecuteCommand(server.own(), session.own());
 	v = 5;
 	pVar->registProperty();
 	pVar->_propertyMap["set_pValue"](pVar,&v);
@@ -64,7 +83,7 @@ int main(){
 	// SmartPtr
 	SmartPtr<int> p(new int(5));
 	cout << *p << endl;
-
+	
 	SmartPtr<HelloWorld> hello(new HelloWorld(88));
 	cout << hello->a() << endl;
 	SmartPtr<HelloWorld> hello1 = hello;
