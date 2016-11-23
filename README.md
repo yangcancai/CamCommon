@@ -1,21 +1,41 @@
 # CamCommon
 * implement C++ Reflection  and SmartPtr
-and memory leak detect use Visual Leak Detector 
+* memory leak detect use Visual Leak Detector 
+* server classes with libevent
 
 # How to Install
 * Download something 
    * Down load Visual Leak Detector for visual c++
    * Link: http://vld.codeplex.com/
+   * Down load libevent
+   * Link: http://libevent.org/
 * Install and Setting 
    * c/c++ -> General -> Additional Include Directories = C:\Program Files (x86)\Visual Leak Detector\include
    * Linker -> General -> Additional Library Directories = C:\Program Files (x86)\Visual Leak Detector\lib\Win32
+   * c/c++ -> General -> Additional Include Directories = libevent\include
+   * Linker -> General -> Additional Library Directories = libevent\lib
+   * c/c++ -> command -> /D WIN32
    
 # How to use?
 ```c
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "libevent.lib")
 int main(){
 
+#ifdef WIN32
+    WSADATA wsa_data;
+	WSAStartup(0x0201, &wsa_data);
+#endif
+    IBootstrap &boot = BootstrapFactory::CreateBootstrap();
+    SmartPtr<IAppServer> server(new AppServer());
+	SmartPtr<IAppSession> session(new AppSession());
+	boot.AddServer(server.own());
+	boot.Start();
+	boot.Loop();
+    
+    
     RefBaseClass* pVar = (RefBaseClass*)RefClassFactory::sharedClassFactory().createClassByName("RefHelloClass");
-	int v = 5;
+    int v = 5;
 	pVar->registProperty();
 	pVar->_propertyMap["set_pValue"](pVar, &v);
 	pVar->display();
@@ -51,6 +71,7 @@ int main(){
   * [Leak Detector](http://www.cnblogs.com/chuncn/archive/2012/12/05/2803450.html)
   * [C++ Reflection](http://blog.csdn.net/cen616899547/article/details/9317323)
   * [SuperSocket](http://www.supersocket.net/)
+  * [Libevent](http://libevent.org/)
  
 # About author
   If you have any quetions,please contact `710180334@qq.com`
