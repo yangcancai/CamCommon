@@ -81,6 +81,24 @@
     <ClInclude Include="IMutex.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="concurrentqueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LockFreeQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LogFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LogAppender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RollingAppender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IAppServer.cpp">
@@ -147,6 +165,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="IMutex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LockFreeQueue.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LogFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LogAppender.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RollingAppender.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

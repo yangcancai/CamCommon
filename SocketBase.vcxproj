@@ -34,10 +34,12 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="libevent.props" />
+    <Import Project="log4cpp.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="libevent.props" />
+    <Import Project="log4cpp.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -46,12 +48,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(LIBEVENT)/include;$(LIBEVENT)/src/WIN32-Code;$(LIBEVENT)/src/compat;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBEVENT)/include;$(LIBEVENT)/src/WIN32-Code;$(LIBEVENT)/src/compat;$(LOG4CPP_DIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/D WIN32 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>G:\data center\网络编程\libevent\project\vs2008\Debug\libevent.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(LOG4CPP_DIR)/msvc10/log4cpp/Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -75,6 +78,7 @@
     <ClInclude Include="BootstrapFactory.h" />
     <ClInclude Include="CommandBase.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="concurrentqueue.h" />
     <ClInclude Include="EchoTos.h" />
     <ClInclude Include="IAppServer.h" />
     <ClInclude Include="IAppSession.h" />
@@ -82,6 +86,10 @@
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IMutex.h" />
     <ClInclude Include="IRequestInfo.h" />
+    <ClInclude Include="LockFreeQueue.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="LogAppender.h" />
+    <ClInclude Include="LogFactory.h" />
     <ClInclude Include="ManagerClass.h" />
     <ClInclude Include="NormalBootstrap.h" />
     <ClInclude Include="Object.h" />
@@ -90,6 +98,7 @@
     <ClInclude Include="RefDynamicClass.h" />
     <ClInclude Include="RefHelloClass.h" />
     <ClInclude Include="RequestInfo.h" />
+    <ClInclude Include="RollingAppender.h" />
     <ClInclude Include="SmartPtr.h" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +114,10 @@
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="IMutex.cpp" />
     <ClCompile Include="IRequestInfo.cpp" />
+    <ClCompile Include="LockFreeQueue.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="LogAppender.cpp" />
+    <ClCompile Include="LogFactory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManagerClass.cpp" />
     <ClCompile Include="NormalBootstrap.cpp" />
@@ -114,6 +127,7 @@
     <ClCompile Include="RefDynamicClass.cpp" />
     <ClCompile Include="RefHelloClass.cpp" />
     <ClCompile Include="RequestInfo.cpp" />
+    <ClCompile Include="RollingAppender.cpp" />
     <ClCompile Include="SmartPtr.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
